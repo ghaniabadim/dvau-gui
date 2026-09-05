@@ -1,0 +1,6 @@
+config BR2_PACKAGE_DVAU_GUI
+	bool "DVAU control panel"
+	depends on BR2_PACKAGE_LVGL
+	help
+	  Full-screen LVGL control-panel application for a 480x272 Linux
+	  framebuffer display. It starts on /dev/fb0 by default.
