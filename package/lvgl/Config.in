@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LVGL
+	bool "lvgl"
+	depends on BR2_USE_MMU
+	help
+	  LVGL is a lightweight, portable graphics library for embedded Linux.

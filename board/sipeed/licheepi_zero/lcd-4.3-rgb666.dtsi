@@ -1,0 +1,57 @@
+/*
+ * Reference panel node for a 4.3-inch 480x272 RGB666 panel.
+ *
+ * Include this from the LicheePi Zero board DTS after wiring the panel to
+ * the V3s LCD (DE) pins. The timing values are the common AT043TN24-style
+ * profile; use the panel datasheet if its required porch/pixel clock differs.
+ */
+
+/ {
+	panel_rgb666: panel {
+		compatible = "simple-panel";
+		status = "okay";
+
+		display-timings {
+			native-mode = <&timing0>;
+			timing0: timing0 {
+				clock-frequency = <9000000>;
+				hactive = <480>;
+				vactive = <272>;
+				hfront-porch = <8>;
+				hback-porch = <43>;
+				hsync-len = <4>;
+				vfront-porch = <4>;
+				vback-porch = <12>;
+				vsync-len = <4>;
+				hsync-active = <0>;
+				vsync-active = <0>;
+				de-active = <1>;
+				pixelclk-active = <0>;
+			};
+		};
+
+		port {
+			panel_input: endpoint {
+				remote-endpoint = <&tcon0_out_panel>;
+			};
+		};
+	};
+};
+
+&de {
+	status = "okay";
+};
+
+&mixer0 {
+	status = "okay";
+};
+
+&tcon0 {
+	status = "okay";
+};
+
+&tcon0_out {
+	tcon0_out_panel: endpoint {
+		remote-endpoint = <&panel_input>;
+	};
+};

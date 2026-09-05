@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+	[ -c /dev/fb0 ] || exit 0
+	/usr/bin/dvau-gui --fbdev /dev/fb0 >/var/log/dvau-gui.log 2>&1 &
+	;;
+  stop)
+	start-stop-daemon -K -q -n dvau-gui
+	;;
+esac

@@ -302,6 +302,8 @@ menu "Games"
 endmenu
 
 menu "Graphic libraries and applications (graphic/text)"
+	source "package/lvgl/Config.in"
+	source "package/dvau-gui/Config.in"
 
 comment "Graphic applications"
 	source "package/cage/Config.in"
